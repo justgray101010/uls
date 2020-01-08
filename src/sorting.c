@@ -13,7 +13,7 @@ void mx_sorting(t_array array, t_input input, int *cur_flag) {
 }
 
 void mx_sort(char **F, int *cur_flag, int dir_count, int noterr) {
-    if (cur_flag[5] && noterr){ //-r
+    if (cur_flag[4] && noterr){ //-r
         mx_backsort(F, 0, dir_count - 1);
         if (cur_flag[2])
             dotsort(F);

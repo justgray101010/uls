@@ -20,7 +20,7 @@
 #include <sys/acl.h>
 #include <sys/xattr.h>
 #include <time.h>
-#include "inc/libmx.h"
+#include "libmx/inc/libmx.h"
 
 typedef struct s_file {
     char *path;
@@ -33,7 +33,6 @@ typedef struct s_file {
     char *time;
     char *stime;
     char *size;
-    char *inode;
 } t_file;
 
 typedef struct s_input {
@@ -143,7 +142,7 @@ void mx_catEPrint(char **F, int *cur_flags, char *dir);
 // //cat -e
 void mx_1print(char **F, int *cur_flags, char *dir);
 // // 1print
-void mx_defSpace(int *cur_flags, int j, int max, t_file **files);
+void mx_defSpace(int j, int max, t_file **files);
 // //
 void mx_standartout(char **F, int n_files, int *cur_flag, char *dir);
 // //standart

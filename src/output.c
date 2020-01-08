@@ -6,10 +6,6 @@ void mx_catEPrint(char **F, int *cur_flags, char *dir) {
 
     files = mx_getFinfo(files, F, dir, cur_flags);
     while (F[c] != NULL) {
-        if (cur_flags[4]) {
-            mx_printstr(files[c]->inode);
-            mx_printstr(" ");
-        }
         mx_printname(files[c], cur_flags);
         mx_printstr("\n");
         c++;
@@ -22,10 +18,6 @@ void mx_1print(char **F, int *cur_flags, char *dir) {
     int i = 0;
 
     while (F[i] != NULL) {
-        if (cur_flags[3]) {
-            mx_printstr(files[i]->inode);
-            mx_printstr(" ");
-        }
             mx_printname(files[i], cur_flags);
             mx_printstr("\n");
             i++;

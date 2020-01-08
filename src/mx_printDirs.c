@@ -42,11 +42,11 @@ static void lOutput(int ndir, char **F, int *cur_flag, char *D) {
 }
 
 static void dirprint(int ndir, char **F, t_input input, char *D) {
-    if (!input.prior[0] && !input.prior[7] 
-        && !input.prior[11] && !input.prior[8]) {
+    if (!input.prior[0] && !input.prior[6] 
+        && !input.prior[10] && !input.prior[7]) {
         if (!isatty(1))
             mx_catEPrint(F, input.cur_flags, D);
-        else if (input.prior[13])
+        else if (input.prior[11])
             mx_1print(F, input.cur_flags, D);
         else
             mx_standartout(F, ndir, input.cur_flags, D);

@@ -3,7 +3,7 @@
 static char *get_path(char *File, char *Directory);
 
 void mx_flagR(char **F, t_input input, char *Dir, int dir_count) {
-    if (input.cur_flags[4])
+    if (input.cur_flags[3])
         for (int i = 0; i < dir_count; i++) {
             char *path = get_path(F[i], Dir);
             struct stat buff;

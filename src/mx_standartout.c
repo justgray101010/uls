@@ -1,6 +1,6 @@
 #include "uls.h"
 
-static int getMaxLength(int *cur_flag, char **F, t_file **files, int n_files);
+static int getMaxLength(char **F, int n_files);
 static int countLines(int n_files, int max);
 static char *getPath(char *File, char *Dir);
 static int getMaxSpace(int max);
@@ -8,7 +8,7 @@ static int getMaxSpace(int max);
 void mx_standartout(char **F, int n_files, int *cur_flag, char *dir) {
     t_file **files = (t_file **)malloc(sizeof(t_file) * 500000);
     files = mx_getFinfo(files, F, dir, cur_flag);
-    int max = getMaxLength(cur_flag, F, files, n_files);
+    int max = getMaxLength(F, n_files);
     int count = countLines(n_files, max);
     char *path;
     int vars[2];
@@ -17,12 +17,11 @@ void mx_standartout(char **F, int n_files, int *cur_flag, char *dir) {
         for (vars[1] = 0; vars[1] < n_files; vars[1]++)
             if (vars[1] == vars[0] || ((vars[1] - vars[0]) % count == 0)) {
                 path = getPath(F[vars[1]], dir);
-                mx_printinode(files[vars[1]], files, cur_flag);
                 mx_printname(files[vars[1]], cur_flag);
                 if (vars[1] + count >= n_files)
                     mx_printstr("\n");
                 else
-                    mx_defSpace(cur_flag, vars[1], max, files);
+                    mx_defSpace(vars[1], max, files);
             }
     free(files);
 }
@@ -35,18 +34,12 @@ static char *getPath(char *File, char *Dir) {
     return path;
 }
 
-static int getMaxLength(int *cur_flag, char **F, t_file **files, int n_files) {
+static int getMaxLength(char **F, int n_files) {
     int max = 0;
 
-    if (!cur_flag[3]) {
         for (int i = 0; i < n_files; i++)
             if (mx_strlen(F[i]) > max)
                 max = mx_strlen(F[i]);
-    }
-    else 
-        for (int i = 0;i < n_files; i++)
-            if(mx_strlen(F[i]) + mx_strlen(files[i]->inode) + 1 > max)
-                max = mx_strlen(F[i]) + mx_strlen(files[i]->inode) + 1;
     return max;
 }
 

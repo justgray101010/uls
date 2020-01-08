@@ -6,10 +6,10 @@ static int *get_currentFlags(int argc, char *argv[],
 t_input input, char *flags);
 
 // system("leaks -q out");
-//l0 A1 a2 i3 R4 r5 u6 n7 g8 C9 p10 o11 T12  113
+//l0 A1 a2 R3 r4 u5 n6 g7 C8 p9 o10 T11 112
 int main(int argc, char *argv[]) {
     t_array *array = mallocarray(argc);
-    char *flags = {"lAaiRrungCpoT1\0"};
+    char *flags = {"lAaRrungCpoT1\0"};
     t_input *input = readinput(argc, argv, *array, flags);
     int *cflags = get_currentFlags(argc, argv, *input, flags);
 

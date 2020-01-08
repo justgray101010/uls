@@ -29,7 +29,7 @@ char *mx_getuser(struct stat buff, int *cur_flag) {
     char *user = (char *)malloc(256);
     struct passwd* tmp = getpwuid(buff.st_uid);
 
-    if (tmp == NULL || cur_flag[7])
+    if (tmp == NULL || cur_flag[6])
         user = mx_itoa(buff.st_uid);
     else
         user = mx_strcpy(user, tmp->pw_name);
@@ -40,7 +40,7 @@ char *mx_getgroup(struct stat buff, int *cur_flag) {
     char *group;
     struct group *tmp_g = getgrgid(buff.st_gid);
 
-    if (tmp_g == NULL || cur_flag[7]) //n
+    if (tmp_g == NULL || cur_flag[6]) //n
         group = mx_itoa(buff.st_gid);
     else
         group = tmp_g->gr_name;

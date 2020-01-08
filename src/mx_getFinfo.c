@@ -34,7 +34,6 @@ static void setinfo(t_file *file, char *F, char *Directory, int *cur_flag) {
     file->time = mx_gettime(time);
     file->stime = mx_getstime(time, cur_time);
     file->size = mx_getsize(buff);
-    file->inode = mx_sizetoa(buff.st_ino);
 }
 
 static char *getpath(char *File, char *Directory) {
@@ -60,7 +59,7 @@ static struct stat getstat(char *path) {
 static time_t gettime(struct stat buff, int *cur_flag) {
     time_t time;
 
-    if (cur_flag[6]) // u
+    if (cur_flag[5]) // u
         time = buff.st_atime;
     else
         time = buff.st_mtime;

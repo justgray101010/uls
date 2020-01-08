@@ -6,7 +6,6 @@ static void print_links(t_file *file, t_file **files);
 static void print_user(t_file *file, t_file **files, int *cur_flag);
 
 void mx_1l(t_file **files, int c, int *cur_flag) {
-    mx_printinode(files[c], files, cur_flag);
     print_permissions(files[c]);
     printacl(files[c]);
     print_links(files[c], files);
@@ -29,7 +28,7 @@ static void print_links(t_file *file, t_file **files) {
 }
 
 static void print_user(t_file *file, t_file **files, int *cur_flag) {
-    if (!cur_flag[8]) {
+    if (!cur_flag[7]) {
         mx_printstr(file->user);
         mx_space(mx_getmaxuser(files) - mx_strlen(file->user));
         mx_printstr("  ");

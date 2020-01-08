@@ -27,26 +27,24 @@ static void printlink(t_file *file) {
     }
 }
 
-static void printgroup(t_file *file, t_file **files, int *cur_flag) {
-    if (!cur_flag[11]) { // g
+static void printgroup(t_file *file, t_file **files, int *cur_flag) {// n
+    if(!cur_flag[10]){
         mx_printstr(file->group);
         mx_space(mx_getmaxgroup(files) - mx_strlen(file->group));
         mx_printstr("  ");
-    } 
+    }
 }
 
 static void printsize(t_file *file, t_file **files, int *cur_flag) {
-    if (cur_flag[11] && cur_flag[8]) 
+    if(cur_flag[10] && cur_flag[7])
         mx_printstr("  ");
-
-    
     mx_space(mx_getmaxsize(files) - mx_strlen(file->size));
     mx_printstr(file->size);
     mx_printstr(" ");
 }
 
 static void printtime(t_file *file, t_file **files, int *cur_flag) {
-    if (!cur_flag[12]) {
+    if (!cur_flag[11]) {
         mx_space(mx_getmaxtime(files) - mx_strlen(file->stime));
         mx_printstr(file->stime);
     }
